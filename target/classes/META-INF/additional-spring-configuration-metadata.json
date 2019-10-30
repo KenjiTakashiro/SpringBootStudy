@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "spring.cloud.azure.credential-file-path",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.azure.credential-file-path'"
+  },
+  {
+    "name": "spring.cloud.azure.resource-group",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.azure.resource-group'"
+  },
+  {
+    "name": "spring.cloud.azure.region",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.azure.region'"
+  },
+  {
+    "name": "spring.cloud.azure.storage.account",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.cloud.azure.storage.account'"
+  }
+]}

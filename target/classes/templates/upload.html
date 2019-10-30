@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>投稿 | Connectgram</title>
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+  $('#myfile').change(function(e){
+    //ファイルオブジェクトを取得する
+    var file = e.target.files[0];
+    var reader = new FileReader();
+ 
+    //画像でない場合は処理終了
+    if(file.type.indexOf("image") < 0){
+      alert("画像ファイルを指定してください。");
+      return false;
+    }
+ 
+    //アップロードした画像を設定する
+    reader.onload = (function(file){
+      return function(e){
+        $("#img1").attr("src", e.target.result);
+        $("#img1").attr("title", file.name);
+      };
+    })(file);
+    reader.readAsDataURL(file);
+ 
+  });
+});
+</script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<h2>写真を投稿</h2>
+    <img id="img1" style="width:65%;" />
+    <br>
+    <form method="post" enctype="multipart/form-data" th:action="@{/upload}" th:object="${form}" >
+        <input th:field="*{file}" type="file" id="myfile" accept="image/*"  required>
+		<p>タイトル
+        <input th:type="text" name="text" required>
+        </p>
+        <p>カテゴリ</p>
+        <input th:type="radio" name="category" value="nature" required>nature
+        <input th:type="radio" name="category" value="person" required>people
+         <input th:type="radio" name="category" value="artifact" required>artifacts
+        <br>
+        <input type="submit" value="投稿する"/>
+    </form>
+<br>
+<br>
+	
+   	<form action="/Main" method="get">
+		<button type="submit">戻る</button>
+	</form>
+<div th:replace="footer :: footer"></div>
+
+</body>
+</html>

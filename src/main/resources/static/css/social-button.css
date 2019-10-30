@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+
+/* -- webfont setting ------------------------------------------------------------ */
+
+@font-face {
+	font-family: 'icomoon';
+	src: url( '../font/icomoon.eot?llxs9x' );
+	src: url( '../font/icomoon.eot?llxs9x#iefix' ) format( 'embedded-opentype' ),
+				url( '../font/icomoon.ttf?llxs9x' ) format( 'truetype' ),
+				url( '../font/icomoon.woff?llxs9x' ) format( 'woff' ),
+				url( '../font/icomoon.svg?llxs9x#icomoon' ) format( 'svg' );
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+
+/* -- social button base setting ------------------------------------------------------------ */
+
+ul.social-button {
+	list-style-type: none;
+	line-height: 1;
+	font-size: 13px;
+}
+
+ul.social-button li {
+	display: inline-block;
+	margin: 0 20px 20px 0;
+}
+
+ul.social-button li a {
+	display: inline-block;
+	padding: 9px 15px 7px;
+	border-radius: 4px;
+	text-decoration: none;
+	color: #ffffff;
+	vertical-align: middle;
+}
+
+ul.social-button li a:before {
+	display: inline-block;
+	font-family: 'icomoon' !important;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 130%;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+ul.social-button li a:hover {
+	opacity: 0.7;
+}
+
+
+
+
+/* -- twitter button ------------------------------------------------------------ */
+
+ul.social-button li.twitter a {
+	background: #1b95e0;
+}
+
+ul.social-button li.twitter a:before {
+	content: "\e90d";
+}
+
+
+
+
+/* -- facebook button ------------------------------------------------------------ */
+
+ul.social-button li.facebook a {
+	background: #3a5795;
+}
+
+ul.social-button li.facebook a:before {
+	content: "\e900";
+}
+
+
+
+
+/* -- hatena button ------------------------------------------------------------ */
+
+ul.social-button li.hatena a {
+	background: #00a4de;
+}
+
+ul.social-button li.hatena a:before {
+	content: "\e90a";
+}
+
+
+
+
+/* -- line button ------------------------------------------------------------ */
+
+ul.social-button li.line a {
+	background: #00c300;
+}
+
+ul.social-button li.line a:before {
+	content: "\e90c";
+}

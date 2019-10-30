@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Login page</title>
+<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.1.2/css/jquery.mb.YTPlayer.min.css" />
+<link href="/css/social-button.css" th:href="@{/css/social-button.css}" rel="stylesheet"></link>
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+</head>
+<body bgcolor="#f6f6f6">
+<img src="img/logo.png" alt="ロゴ" width=100% style="opacity: 0.5;">
+<div id="bgndVideo" class="player" data-property="{videoURL:'https://youtu.be/WexkMxIzqwo',mute:true,opacity : 0.7, showControls : false, showYTLogo : false}"></div>
+<h2>Login</h2>
+
+<form th:action="@{/login}" method="post">
+    <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+            class="alert-danger">
+        <span th:text="ユーザ名またはパスワードに誤りがあります"></span>
+    </div>
+    <div style="width:160px;"><label for="username">ユーザ名：</label></div>
+    <input type="text" name="username" autofocus="autofocus" id="form" />
+    <br/>
+    <div style="width:160px;"><label for="password">PASSWORD：</label></div>
+    <input type="password" name="password" id="form" />
+    <br/>
+
+    <p><input type="submit" value="ログイン"  onClick="return Check()"></p>
+
+</form>
+<div th:replace="footer :: footer"></div>
+<script type="text/javascript" src="js/alert.js"></script>
+<script src="//code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.mb.YTPlayer/3.1.2/jquery.mb.YTPlayer.min.js"></script>
+<script>
+jQuery(function(){
+  jQuery("#bgndVideo").YTPlayer();
+});
+</script>
+</body>
+</html>

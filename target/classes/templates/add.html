@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>投稿一覧 | Connectgram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="/css/rating.css">
+</head>
+<body>
+	<form action="/Rating" method="get" th:fragment="add">	
+		<th:block th:each="obj : ${datalist}">
+			<p>[[${obj.filename}]]</p>
+				<input type=image th:src="@{'/postImg/' + ${obj.filename}}" alt="表示できない" width=40%> 
+
+				<input type="hidden" th:value="${obj.filename}" name="obj">
+
+		<div align="center">
+			<div class="star-rating">
+				<div class="star-rating-front" style="width:\[__${obj.rate}__%]\">★★★★★</div>
+				<div class="star-rating-back">★★★★★</div>
+			</div>
+		</div>
+		<td>「[[${obj.text}]]」</td>
+
+		<td>[[${obj.user}]]</td>
+	</th:block>
+	</form>
+</body>
+</html>

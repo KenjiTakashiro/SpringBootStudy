@@ -1,0 +1,99 @@
+# Created at 2019-08-06T14:22:55.959
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+# Created at 2019-08-06T14:22:56.271
+Unexpected IOException with stream: 2019-08-06 14:22:56.271  INFO 12540 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 421ms. Found 5 repository interfaces.
+
+
+# Created at 2019-08-06T14:22:57.005
+Unexpected IOException with stream: 2019-08-06 14:22:57.005  INFO 12540 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$25d13dd0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+
+# Created at 2019-08-06T14:22:57.380
+Unexpected IOException with stream: 2019-08-06 14:22:57.380  INFO 12540 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+
+
+# Created at 2019-08-06T14:22:59.182
+Unexpected IOException with stream: 2019-08-06 14:22:59.182  INFO 12540 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+
+
+# Created at 2019-08-06T14:22:59.291
+Unexpected IOException with stream: 2019-08-06 14:22:59.291  INFO 12540 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+
+
+# Created at 2019-08-06T14:22:59.400
+Unexpected IOException with stream: 2019-08-06 14:22:59.400  INFO 12540 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+
+
+# Created at 2019-08-06T14:22:59.400
+Unexpected IOException with stream: 2019-08-06 14:22:59.400  INFO 12540 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+
+
+# Created at 2019-08-06T14:22:59.666
+Unexpected IOException with stream: 2019-08-06 14:22:59.666  INFO 12540 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+
+
+# Created at 2019-08-06T14:22:59.978
+Unexpected IOException with stream: 2019-08-06 14:22:59.978  INFO 12540 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+
+
+# Created at 2019-08-06T14:23:00.822
+Unexpected IOException with stream: 2019-08-06 14:23:00.806  INFO 12540 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+
+
+# Created at 2019-08-06T14:23:02.782
+Unexpected IOException with stream: 2019-08-06 14:23:02.782  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/img/**'], []
+
+
+# Created at 2019-08-06T14:23:02.798
+Unexpected IOException with stream: 2019-08-06 14:23:02.782  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/css/**'], []
+
+
+# Created at 2019-08-06T14:23:02.798
+Unexpected IOException with stream: 2019-08-06 14:23:02.798  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/js/**'], []
+
+
+# Created at 2019-08-06T14:23:02.798
+Unexpected IOException with stream: 2019-08-06 14:23:02.798  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/webjars/**'], []
+
+
+# Created at 2019-08-06T14:23:02.798
+Unexpected IOException with stream: 2019-08-06 14:23:02.798  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: Ant [pattern='/font/**'], []
+
+
+# Created at 2019-08-06T14:23:03.017
+Unexpected IOException with stream: 2019-08-06 14:23:03.001  INFO 12540 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@79295932, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bda01da, org.springframework.security.web.header.HeaderWriterFilter@1b25d695, org.springframework.security.web.authentication.logout.LogoutFilter@4a890fdd, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3caa4d85, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25216999, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@114b203, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2cadcff6, org.springframework.security.web.session.SessionManagementFilter@6d31f14, org.springframework.security.web.access.ExceptionTranslationFilter@338a4c61, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2a075e70]
+
+
+# Created at 2019-08-06T14:23:03.823
+Unexpected IOException with stream: 2019-08-06 14:23:03.823  INFO 12540 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+
+
+# Created at 2019-08-06T14:23:03.901
+Unexpected IOException with stream: 2019-08-06 14:23:03.901  WARN 12540 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+
+
+# Created at 2019-08-06T14:23:04.932
+Unexpected IOException with stream: 2019-08-06 14:23:04.916  INFO 12540 --- [           main] c.e.demo.ConnectgramApplicationTests     : Started ConnectgramApplicationTests in 11.322 seconds (JVM running for 12.422)
+
+
+# Created at 2019-08-06T14:23:04.979
+Unexpected IOException: 5,1,com.example.demo.ConnectgramApplicationTests,contextLoads(com.example.demo.ConnectgramApplicationTests),null,null,null
+
+
+# Created at 2019-08-06T14:23:05.072
+Unexpected IOException: 6,1,com.example.demo.ConnectgramApplicationTests,contextLoads(com.example.demo.ConnectgramApplicationTests),null,null,null
+
+
+# Created at 2019-08-06T14:23:05.072
+Unexpected IOException: 2,1,org.apache.maven.surefire.junit4.JUnit4Provider,com.example.demo.ConnectgramApplicationTests,null,null,null
+
+

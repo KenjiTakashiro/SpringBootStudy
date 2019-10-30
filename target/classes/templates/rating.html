@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>詳細 | Connectgram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link href="/css/rating.css" th:href="@{/css/rating.css}" rel="stylesheet"></link>
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script th:inline="javascript">
+            /*<![CDATA[*/
+		$(function(){
+			//answer送信
+			$(document).on("click","#id_submit",function(){
+				//rateIdとanswerを取得
+				var rateId =document.getElementById("id_rateId").value;
+				var answer = document.getElementById("id_answer").value;
+
+				console.log(rateId);
+				console.log(answer);
+
+				$.ajax({
+					url 			:'/Answer',
+					type			:'post',
+					data			:{'answer':answer,'rateId':rateId},
+					datatype	:"JSON"
+				}).done(function(obj){
+					//成功時の処理
+					location.reload();
+				}).fail(function(xhr,status,error){
+					//失敗時の処理
+					alert('false...');
+					console.log(xhr);
+					console.log(status);
+					console.log(error);
+				});
+			});
+		});
+            	/*]]>*/
+        </script>
+
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+	<div class="main">
+		<br> <br>
+		<div align="center">
+			<h1></h1>
+	<p th:text="|「${text}」|"></p>
+			<img th:src="@{'https://connectgramimg.blob.core.windows.net/img/' + '__${filename}__'}" alt="表示できてない" width="65%">
+			<div th:unless="${upUser == account.username}">
+				<p>上記の写真へ評価を投稿</p>
+				<form action="/Rating" method="post">
+					 <div class="evaluation">
+					    <input id="star1" type="radio" name="star" value="100" />
+   						 <label for="star1"><span class="text">Awesome</span>★</label>
+   						 <input id="star2" type="radio" name="star" value="80" />
+  						  <label for="star2"><span class="text">Excellent </span>★</label>
+ 						   <input id="star3" type="radio" name="star" value="60" />
+ 						   <label for="star3"><span class="text">Great</span>★</label>
+	  					  <input id="star4" type="radio" name="star" value="40" />
+ 						   <label for="star4"><span class="text">Good </span>★</label>
+ 						   <input id="star5" type="radio" name="star" value="20" />
+  						  <label for="star5"><span class="text">Not Good</span>★</label>
+ 					 </div>
+
+ 				<br><p>コメント</p><input type="text" name="text"> 
+					<input type="hidden" name="filename"  th:value="${filename}"> 
+					<input type="hidden" name=""  th:value="${filename}"> 
+					
+				<input type="submit" value="投稿">
+			</form>
+			<br>
+		</div>
+<!-- 投稿ユーザー自身の場合、投稿ごとの評価・評価投稿者・コメントを表示 -->
+		<div id="rate">
+			<h3>評価一覧</h3>
+			<div class="rating">
+				<th:block th:each="rating, stat : ${rating}" >
+					<p th:text="${rating.comment_user}"></p>
+					<div class="star-rating">
+						<div th:unless="${rating.rate  == null}">
+							<div class="star-rating-front"  th:style="|width:${rating.rate}%|">★★★★★</div>
+						</div>
+						<div class="star-rating-back">★★★★★</div>
+					</div>
+					<p th:text="${rating.comment}"></p>
+					<div th:if="${rating.answer != null}">
+					<p th:text="|@ ${rating.comment_user} ${rating.answer}|"></p>
+					</div>
+					<div th:if="${rating.answer == null && upUser == account.username}">
+					<form id ="form">
+						<input type="text"  name="answer" id="id_answer">
+						<input type="hidden" name="rateId" th:value="${rating.id}"  id="id_rateId">
+						<input type="button" id="id_submit" value="返信">
+					</form>
+					</div>
+				<br>
+			</th:block>
+
+			</div>
+		</div>
+	</div>
+<br><br><br>
+</div>
+<div th:replace="footer :: footer"></div>
+
+</body>
+</html>

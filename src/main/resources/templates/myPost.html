@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>自身の投稿 | Connectgram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+<link href="/css/social-button.css" th:href="@{/css/social-button.css}" rel="stylesheet"></link>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/test-jscroll.js"></script>
+<script type="text/javascript" src="js/jquery.jscroll.min.js" ></script>
+<script type="text/javascript"  src="js/social-button.js" th:src="@{/js/social-button.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+$(function() {
+	var cnt = 0;
+
+	$(document).on('click','#test_btn',function(){
+//    		カウント更新
+	cnt += 5;
+        	//	クリック回数の送信テスト
+	$.ajax({
+		url				:'/myPost',
+		type				:'post',
+		data				:{'num':cnt},
+		dataType    : "JSON"
+	}).done(function(obj){	// 	成功
+		$('#motto').remove(); //	追加ボタンを一旦除去
+		if (obj.length = 5){//5件フルで取得した場合（＝もっとボタンを再表示する）
+			for (var i = 0; i < obj.length; i++) {
+				if(obj[i].rate == null){	//評価投稿がまだない場合
+					$("#out").before(
+							"<form action='/Rating' method='get'>"
+							+ "<p>「" + obj[i].text + "」 (category:" + obj[i].category + ")</p><br>"       		
+							+"<input type=image src='https://connectgramimg.blob.core.windows.net/img/" + obj[i].filename + "' alt='表示できない' width=40%>"
+							+"<input type='hidden' value='" + obj[i].filename +"' name='filename'>"
+							+"<input type='hidden' value='" + obj[i].user +"' name='user'>"
+							+"<input type='hidden' value='" + obj[i].id +"' name='picId'>"
+							+"<input type='hidden' value='" + obj[i].text +"' name='text'>"
+							+'<div class="star-rating"><div class="star-rating-front" style="width:0% ">★★★★★</div>'
+							+'<div class="star-rating-back">★★★★★</div></div>'
+							+'<p>photo by ' + obj[i].user + '</p>'
+							+'</form><br>'
+					).trigger('create');
+				}else{		//評価が投稿されている
+					$("#out").before(
+							"<form action='/Rating' method='get'>"
+							+ "<p>「" + obj[i].text + "」 (category:" + obj[i].category + ")</p><br>"       		
+							+"<input type=image src='https://connectgramimg.blob.core.windows.net/img/" + obj[i].filename + "' alt='表示できない' width=40%>"
+							+"<input type='hidden' value='" + obj[i].filename +"' name='filename'>"
+							+"<input type='hidden' value='" + obj[i].user +"' name='user'>"
+							+"<input type='hidden' value='" + obj[i].id +"' name='picId'>"
+							+"<input type='hidden' value='" + obj[i].text +"' name='text'>"
+						+'<div class="star-rating" ><div class="star-rating-front" style="width:'+ obj[i].rate +'% ">★★★★★</div>'
+						+'<div class="star-rating-back">★★★★★</div></div>'
+						+'<p>photo by ' + obj[i].user + '</p>'
+						+'</form><br>'
+					).trigger('create');
+				}
+			}
+		$('#out').after('<br><div id="motto"><input type="button" id="test_btn" value="motto" /><br /></div><div id="out"></div>').trigger('create');
+		
+		}else {//取得件数が5件未満の場合
+			for (var i = 0; i < obj.length; i++) {
+				if(obj[i].rate == null){	//評価投稿がまだない場合
+					$("#out").before(
+						"<form action='/Rating' method='get'>"
+						+ "<p>「" + obj[i].text + "」 (category:" + obj[i].category + ")</p><br>"       		
+						+"<input type=image src='https://connectgramimg.blob.core.windows.net/img/" + obj[i].filename + "' alt='表示できない' width=40%>"
+						+"<input type='hidden' value='" + obj[i].filename +"' name='filename'>"
+						+"<input type='hidden' value='" + obj[i].user +"' name='user'>"
+						+"<input type='hidden' value='" + obj[i].id +"' name='picId'>"
+						+"<input type='hidden' value='" + obj[i].text +"' name='text'>"
+						+'<div class="star-rating"><div class="star-rating-front" style="width:0% ">★★★★★</div>'
+						+'<div class="star-rating-back">★★★★★</div></div>'
+						+'<p>photo by ' + obj[i].user + '</p>'
+						+'</form><br>'
+					).trigger('create');
+				}else{		//評価が投稿されている
+					$("#out").before(
+						"<form action='/Rating' method='get'>"
+						+ "<p>「" + obj[i].text + "」 (category:" + obj[i].category + ")</p><br>"       		
+						+"<input type=image src='https://connectgramimg.blob.core.windows.net/img/" + obj[i].filename + "' alt='表示できない' width=40%>"
+						+"<input type='hidden' value='" + obj[i].filename +"' name='filename'>"
+						+"<input type='hidden' value='" + obj[i].user +"' name='user'>"
+						+"<input type='hidden' value='" + obj[i].id +"' name='picId'>"
+						+"<input type='hidden' value='" + obj[i].text +"' name='text'>"
+						+'<div class="star-rating" ><div class="star-rating-front" style="width:'+ obj[i].rate +'% ">★★★★★</div>'
+						+'<div class="star-rating-back">★★★★★</div></div>'
+						+'<p>photo by ' + obj[i].user + '</p>'
+						+'</form><br>'
+					).trigger('create');
+				}
+			}
+		}
+	}).fail(function(xhr,status,error){	//	失敗
+		$('#log').append('xhr.status = ' + xhr.status + '<br>');
+		$('#log').append('xhr.statusText = ' + xhr.statusText + '<br>');
+		$('#log').append('status = ' + xhr.status + '<br>');
+		$('#log').append('error = ' + error + '<br>');
+		});
+    });
+});
+/*]]>*/
+</script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class='main scroll' align="center">
+	<h1>投稿一覧</h1>
+	<br>
+	<p th:text="${account.username}"></p>
+
+	<p><a th:href="@{'/upload'}">投稿する</a></p><br>
+			<th:block th:each="obj, stat : ${datalist}" >
+				<form action="/Rating" method="get">	
+					<p>「[[${obj.text}]]」(category:[[${obj.category}]])</p>
+					<input type=image th:src="@{'https://connectgramimg.blob.core.windows.net/img/' + ${obj.filename}}" alt="表示できない" width=40%> 
+					<input type="hidden" th:value="${obj.filename}" name="filename">
+					<input type="hidden" th:value="${obj.user}" name="user">
+					<input type="hidden" th:value="${obj.id}" name="picId">
+					<input type="hidden" th:value="${obj.text}" name="text">
+
+					<div class="star-rating">
+						<div th:unless="${obj.rate  == null}">
+							<div class="star-rating-front"  th:style="|width:${obj.rate}%|">★★★★★</div>
+						</div>
+						<div class="star-rating-back">★★★★★</div>
+					</div>
+				<p>photo by [[${obj.user}]]</p>
+			</form>
+		</th:block>
+	<br>
+		<div id="motto">
+			<input type="button" id="test_btn" value="motto" /><br />
+		</div>
+		<div id="out"></div>
+		<br>
+
+<br>
+<div id="social"></div>
+<br><br>
+</div>
+<div th:replace="footer :: footer"></div>
+
+</body>
+</html>
