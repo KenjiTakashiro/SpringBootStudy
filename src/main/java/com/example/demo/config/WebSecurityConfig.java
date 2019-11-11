@@ -49,18 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		  	.logoutSuccessUrl("/login") // セッションを破棄する
 	  .invalidateHttpSession(true).permitAll(); }
 	 
-	/*
-	 * @Override
-	 *  public void configure(HttpSecurity http)throws Exception {
-	 * http.authorizeRequests() .antMatchers("/login").permitAll()//ログインフォームは認可
-	 * .anyRequest().authenticated(); http.formLogin()
-	 * .loginProcessingUrl("/login")	//ログインを処理するURL .loginPage("login")//ログイン画面のURL
-	 * .failureUrl("/")	//認証失敗時のURL 
-	 * .successForwardUrl("/myPage")	//認証成功時のURL
-	 * .usernameParameter("username")//ユーザーのパラメータ
-	 * .passwordParameter("password");//パスワードのパラメータ名 http.logout()
-	 * .logoutUrl("")//ログアウト時のURL .logoutSuccessUrl("/"); }
-	 */
+	
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
