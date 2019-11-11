@@ -17,9 +17,6 @@ import lombok.Data;
 @Table(name = "ratings2")
 public class Rating {
 	@Id
-	/*
-	 * @GeneratedValue(strategy = GenerationType.AUTO)
-	 */	
 	@GeneratedValue
 	@Column
 	private Long id;
@@ -38,9 +35,4 @@ public class Rating {
 	
 	@Column
 	private String answer;
-	/*
-	 * @ManyToOne(fetch = FetchType.EAGER)
-	 * 
-	 * @JoinColumn(name = "filenames") private Upload upload;
-	 */
 }
