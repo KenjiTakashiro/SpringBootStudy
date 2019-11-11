@@ -8,9 +8,6 @@ import lombok.*;
 @Table(name = "reply")
 public class Reply {
 	@Id
-	/*
-	 * @GeneratedValue(strategy = GenerationType.AUTO)
-	 */	
 	@GeneratedValue
 	@Column
 	private Long id;
