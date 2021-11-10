@@ -54,11 +54,12 @@ public class FileUploadController {
 		return DateTimeFormatter.ofPattern("yyyyMMddHHmm").format(LocalDateTime.now()) + getExtension(fileName);
 	}
 
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\ AZURE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+// AZURE関係
 	// azure認証情報
 	public static final String storageConnectionString = "DefaultEndpointsProtocol=https;"
 			+ "AccountName=connectgramimg;"
-			+ "AccountKey=G7QLecLR2+A2y4uIcujQ2cARnlse/wesbTnW8kih2JzSjk3R9JbiZWQ0hlm3W8gvuDgCchj/58NzaR227Q7Vkw==";
+		//キー情報を記述
+			+ "AccountKey=***********************************************************";
 
 	// MPF→Fileクラスに変換
 	public File convert(MultipartFile file) throws IOException, ImageProcessingException {
@@ -71,7 +72,7 @@ public class FileUploadController {
 		return convFile;
 	}
 
-	// azureアップロードサンプル
+	// azureアップロード
 	public void saveImg(MultipartFile file) throws InvalidKeyException, IOException, ImageProcessingException {
 		File fOld = null;
 		System.out.println("Azure Blob storage quick start sample");
@@ -82,10 +83,10 @@ public class FileUploadController {
 		File sourceFile = new File(getUploadFileName(file.getOriginalFilename()));
 
 		if (fOld.exists()) {
-			// ファイル名変更実行
+			// ファイル名変更
 			fOld.renameTo(sourceFile);
+			//検証用
 			System.out.println("ファイル名を変更しました。	確認：" + sourceFile);
-
 		} else {
 			System.out.println("ファイルが存在しません。");
 		}
@@ -124,7 +125,7 @@ public class FileUploadController {
 			System.out.println("The program has completed successfully.");
 		}
 	}
-	// \\\\\\\\\\\\\\\\\\\\\\\\\\\\ AZURE \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+// 以上　AZURE関係
 
 	@RequestMapping(path = "/upload", method = RequestMethod.GET)
 	String uploadview(Model model) {
@@ -171,9 +172,8 @@ public class FileUploadController {
 		//コンソールへ情報を書き出し
 		File sourceFile = new File(getUploadFileName(form.getFile().getOriginalFilename()));
 		Metadata metadata = null;;
-
-			metadata = ImageMetadataReader.readMetadata(sourceFile);
-	      for (Directory directory : metadata.getDirectories()) {
+		metadata = ImageMetadataReader.readMetadata(sourceFile);
+		for (Directory directory : metadata.getDirectories()) {
 	          for (Tag tag : directory.getTags()) {
 	              System.out.println(tag);
 	          }
