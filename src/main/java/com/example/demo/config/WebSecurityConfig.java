@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		  	.logout()
 	  // ログアウトでログインページに戻る 
 		  	.logoutSuccessUrl("/login") // セッションを破棄する
-	  .invalidateHttpSession(true).permitAll(); }
+	  		.invalidateHttpSession(true).permitAll(); }
 	 
 	
 	
